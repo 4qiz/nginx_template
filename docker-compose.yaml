@@ -11,18 +11,18 @@ services:
       - "./locations:/etc/nginx/locations:ro"
       - "./configuration:/etc/nginx/configuration:ro"
       - "./sites-enabled:/etc/nginx/sites-enabled:ro"
-      - "./error-pages:/etc/nginx/error-pages:ro"
-      - "./resources:/var/www/html/resources:ro"
-      - "./ssl:/etc/nginx/ssl:ro"
+      - "./error-pages:/etc/nginx/error-pages/"
+      - "./resources:/var/www/html/resources"
+      - "./ssl:/etc/nginx/ssl"
       - "./logs:/var/log/nginx/"
     networks:
-      services: {}
+      local_net: {}
     ports:
       - 80:80
       - 443:443
 
 networks:
-  services:
+  local_net:
     external: true
     driver: bridge
     name: services
